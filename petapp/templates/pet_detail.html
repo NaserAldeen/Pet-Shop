@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Pet Detail{% endblock title %}
+
+{% block content %}
+
+<br>
+<div class="card">
+  <h5 class="card-header">Pet Info</h5>
+  {% if pet.image %}
+    <img class="card-img-top" src="{{pet.image.url}}" alt="pet image" width="400" height="450">
+  {% endif %}
+  <div class="card-body">
+    <h5 class="card-title">{{pet.name}}</h5>
+    <p class="card-text">Age: {{pet.age}}</p>
+    <p class="card-text">Available: {{pet.available}}</p>
+    <p class="card-text">Pirce: {{pet.price}}KD </p>
+
+  
+    <div class="row text-center">
+        <div class="col-md-6">
+            <a href="{% url 'pet-update' pet.id %}" class="btn btn-outline-primary btn-block">Update</a>
+        </div>
+        <div class="col-md-6">
+            <a href="{% url 'pet-delete' pet.id %}" class="btn btn-outline-danger btn-block">Delete</a>
+        </div>
+       
+
+    </div>
+  </div>
+</div>
+{% endblock content %}

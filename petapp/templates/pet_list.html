@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+	{% for pet in pets %}
+<div class="col-sm-4">
+	<div class="card">
+		{% if pet.image %}
+            <img class="card-img-top" src="{{pet.image.url}}" alt="pet image." width="310" height="200">
+          {% endif %}
+		<div class="card-body">
+			<h5 class="card-title">Name: {{pet.name}}</h5>
+			<p class="card-text">Age: {{pet.age}}</p>
+			<p class="card-text">Price: {{pet.price}}</p>
+			<a href="{% url 'pet-detail' pet.id %}" class="btn" style="background-color: #e3f2fd; color: black;">View Details</a>
+		</div>
+	</div>
+</div>
+	{% endfor %}
+</div>
+
+{% endblock content %}
